@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ScheduleListUI.Views.ScheduleListView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:ScheduleListUI.Models"
+    xmlns:viewModels="clr-namespace:ScheduleListUI.ViewModels"
+    Title="ScheduleListView"
+    x:DataType="viewModels:ScheduleListViewModel"
+    Shell.NavBarIsVisible="False">
+    <Grid>
+        <VerticalStackLayout x:Name="panelRight" Padding="10,0,10,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Column="0"
+                    HeightRequest="30"
+                    Source="{AppThemeBinding Dark=dashboard_white.png,
+                                             Light=dashboard_black.png}"
+                    WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <HorizontalStackLayout
+                    Grid.Column="1"
+                    HorizontalOptions="EndAndExpand"
+                    Spacing="10">
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label Text="{Binding CurrentDate, StringFormat='{0:dddd}'}" />
+                        <Label Text="{Binding CurrentDate, StringFormat='{0:MMM yyyy}'}" />
+                    </VerticalStackLayout>
+                    <DatePicker
+                        Date="{Binding CurrentDate}"
+                        DateSelected="DatePicker_DateSelected"
+                        FontAttributes="Bold"
+                        FontSize="45"
+                        Format="dd" />
+                </HorizontalStackLayout>
+            </Grid>
+            <Label
+                FontSize="45"
+                HorizontalTextAlignment="End"
+                Text="Agenda" />
+            <BoxView HeightRequest="1" Color="LightGray" />
+
+
+            <ActivityIndicator
+                HeightRequest="30"
+                IsRunning="True"
+                IsVisible="{Binding IsBusy}"
+                WidthRequest="30" />
+            <CollectionView Margin="0,5,0,0" ItemsSource="{Binding ScheduleList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ScheduleModel">
+                        <Grid Margin="0,5,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                                <Label FontAttributes="Bold" Text="{Binding StartDateTime, StringFormat='{0: hh:mm tt}'}" />
+                                <Label Text="{Binding EndDateTime, StringFormat='{0: hh:mm tt}'}" />
+                            </VerticalStackLayout>
+
+                            <Frame
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Padding="15"
+                                BackgroundColor="{Binding BackgroundColor}">
+                                <VerticalStackLayout Spacing="5">
+                                    <Label
+                                        FontSize="18"
+                                        Text="{Binding Title}"
+                                        TextColor="White" />
+                                    <Label
+                                        FontSize="16"
+                                        Text="{Binding Description}"
+                                        TextColor="White" />
+                                    <Label
+                                        FontSize="14"
+                                        Text="Location Info"
+                                        TextColor="White" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+        <StackLayout
+            x:Name="panelLeft"
+            BackgroundColor="#222429"
+            HorizontalOptions="Start"
+            WidthRequest="80">
+
+            <Image
+                Margin="0,20,0,0"
+                HeightRequest="30"
+                Source="dashboard_white.png"
+                WidthRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <CollectionView Margin="0,20,0,0" ItemsSource="{Binding WeekDays}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:DaysModel">
+                        <Grid Margin="0,5,0,5">
+                            <Border
+                                BackgroundColor="#454952"
+                                HeightRequest="40"
+                                StrokeThickness="0"
+                                WidthRequest="40">
+                                <Label
+                                    FontSize="18"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding DayName}"
+                                    VerticalTextAlignment="Center" />
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="5" />
+                                </Border.StrokeShape>
+                                <Border.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsSelected}"
+                                        TargetType="Border"
+                                        Value="True">
+                                        <Setter Property="BackgroundColor" Value="Orange" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding IsSelected}"
+                                        TargetType="Border"
+                                        Value="False">
+                                        <Setter Property="BackgroundColor" Value="#454952" />
+                                    </DataTrigger>
+                                </Border.Triggers>
+                            </Border>
+
+                            <Border
+                                Margin="0,0,-10,0"
+                                BackgroundColor="White"
+                                HeightRequest="18"
+                                HorizontalOptions="End"
+                                IsVisible="{Binding IsSelected}"
+                                Rotation="45"
+                                StrokeThickness="0"
+                                WidthRequest="18" />
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:ScheduleListViewModel}}, Path=WeekDaysSelectedCommand}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Image
+                Margin="0,0,0,10"
+                HeightRequest="30"
+                Source="setting_white.png"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="30" />
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

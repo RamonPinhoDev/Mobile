@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ScheduleListUI.Views.Menu"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Menu">
+
+    <Grid RowDefinitions="Auto, 5*,1*" RowSpacing="0">
+        <VerticalStackLayout
+            Grid.Row="0"
+            Padding="20"
+            BackgroundColor="White"
+            Spacing="1"
+            VerticalOptions="Start">
+
+
+
+            <ImageButton
+                x:Name="ImgBtnPerfil"
+                Padding="5"
+                Aspect="AspectFill"
+                Clicked="ImgBtnPerfil_Clicked"
+                CornerRadius="60"
+                HeightRequest="120"
+                Source="profile.png"
+                WidthRequest="120" />
+
+            <Label
+                x:Name="LblNomeUsuario"
+                HorizontalOptions="Center"
+                TextColor="#000000" />
+
+
+
+
+
+
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Margin="20"
+            Spacing="20">
+            <HorizontalStackLayout Spacing="10">
+                <Image HeightRequest="30" Source="information" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Nossa História" />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapNossaHistoria" Tapped="TapNossaHistoria_Tapped" />
+
+                </HorizontalStackLayout.GestureRecognizers>
+
+            </HorizontalStackLayout>
+
+            <Border BackgroundColor="White" HeightRequest="1" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Image HeightRequest="30" Source="contato" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Contato" />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapContato" Tapped="TapContato_Tapped" />
+
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <ImageButton
+            x:Name="BtnLogout"
+            Grid.Row="2"
+            Padding="5"
+            BackgroundColor="Transparent"
+            HeightRequest="60"
+            HorizontalOptions="Center"
+            Source="logout.png"
+            ToolTipProperties.Text="Logout"
+            WidthRequest="60" />
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScheduleListUI</name>
+    </assembly>
+    <members>
+        <member name="T:ScheduleListUI.Models.DaysModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:ScheduleListUI.Models.DaysModel.IsSelected">
+            <inheritdoc cref="F:ScheduleListUI.Models.DaysModel._isSelected"/>
+        </member>
+        <member name="T:ScheduleListUI.ViewModels.ScheduleListViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ScheduleListUI.ViewModels.ScheduleListViewModel.CurrentDate">
+            <inheritdoc cref="F:ScheduleListUI.ViewModels.ScheduleListViewModel._currentDate"/>
+        </member>
+        <member name="P:ScheduleListUI.ViewModels.ScheduleListViewModel.IsBusy">
+            <inheritdoc cref="F:ScheduleListUI.ViewModels.ScheduleListViewModel._isBusy"/>
+        </member>
+        <member name="F:ScheduleListUI.ViewModels.ScheduleListViewModel.weekDaysSelectedCommand">
+            <summary>The backing field for <see cref="P:ScheduleListUI.ViewModels.ScheduleListViewModel.WeekDaysSelectedCommand"/>.</summary>
+        </member>
+        <member name="P:ScheduleListUI.ViewModels.ScheduleListViewModel.WeekDaysSelectedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:ScheduleListUI.ViewModels.ScheduleListViewModel.WeekDaysSelected(ScheduleListUI.Models.DaysModel)"/>.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSelected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSelected" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSelected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSelected" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+    </members>
+</doc>
